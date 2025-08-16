@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click sul Rosso!</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  #rosso {
+    position: absolute;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  #score {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+<div id="score">Punteggio: 0</div>
+<button id="rosso">Cliccami!</button>
+
+<script>
+const button = document.getElementById('rosso');
+const scoreDisplay = document.getElementById('score');
+let score = 0;
+
+function muoviButton() {
+    const width = window.innerWidth - button.offsetWidth;
+    const height = window.innerHeight - button.offsetHeight;
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    button.style.left = x + 'px';
+    button.style.top = y + 'px';
+}
+
+button.addEventListener('click', () => {
+    score++;
+    scoreDisplay.textContent = 'Punteggio: ' + score;
+    muoviButton();
+});
+
+// Posizionamento iniziale
+muoviButton();
+</script>
+</body>
+</html>
